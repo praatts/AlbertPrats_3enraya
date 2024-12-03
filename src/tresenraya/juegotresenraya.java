@@ -7,12 +7,12 @@ public class juegotresenraya {
 		// TODO Auto-generated method stub
 
 		//Variables para determinar el carácter que usará cada jugador
-		char j1 = 'O';
-		char j2 = 'X';
+		int contadorJugadas = 0;
 		String jugadorInicial;
 		String segundoJugador;
 		int fila = 0;
 		int columna = 0;
+		int partida = 0;
 		Scanner s = new Scanner(System.in);
 		Random r = new Random();
 		
@@ -77,6 +77,7 @@ public class juegotresenraya {
 			
 			//Muestra el tablero
 			
+			
 			char[][] tablero = {{'-','-','-'},
 								{'-','-','-'},
 								{'-','-','-'}};
@@ -91,6 +92,7 @@ public class juegotresenraya {
 				System.out.println();
 			}
 			
+			while (partida != 1) {
 			
 			System.out.println(jugadorInicial + " donde quieres situar tu ficha?");
 			System.out.println("Fila (1-3): ");
@@ -99,7 +101,47 @@ public class juegotresenraya {
 			columna = s.nextInt() - 1;
 			
 			if (tablero[fila][columna] == '-') {
+				tablero[fila][columna] = 'O';
+			} else {
+				System.out.println("La posición introducida ya está ocupada, vuelva a seleccionar la posición");
+				System.out.println("Fila (1-3): ");
+				fila = s.nextInt() - 1;
+				System.out.println("Columna (1-3): ");
+				columna = s.nextInt() - 1;
+			}
+			
+			
+			
+			System.out.println("Tablero actualizado");
+			for (int i = 0; i < tablero.length; i++) {
+				for (int j = 0; j < tablero[i].length; j++) {
+					System.out.print(tablero[i][j] + " ");
+				}
+				
+				System.out.println();
+			}
+			
+			contadorJugadas++;
+			
+			if (contadorJugadas == 9) {
+				System.out.println("Juego finalizado, gracias por jugar!");
+				partida = 1;
+			}
+			
+			System.out.println(segundoJugador + " donde quieres situar tu ficha?");
+			System.out.println("Fila (1-3): ");
+			fila = s.nextInt() - 1;
+			System.out.println("Columna (1-3): ");
+			columna = s.nextInt() - 1;
+			
+			if (tablero[fila][columna] == '-') {
 				tablero[fila][columna] = 'X';
+			} else {
+				System.out.println("La posición introducida ya está ocupada, vuelva a seleccionar la posición");
+				System.out.println("Fila (1-3): ");
+				fila = s.nextInt() - 1;
+				System.out.println("Columna (1-3): ");
+				columna = s.nextInt() - 1;
 			}
 			
 			System.out.println("Tablero actualizado");
@@ -109,6 +151,12 @@ public class juegotresenraya {
 				}
 				
 				System.out.println();
+			}
+			
+			contadorJugadas++;
+			
+			
+			
 			}
 			
 			break;
@@ -125,7 +173,8 @@ public class juegotresenraya {
 				
 			}
 			break;
-		} 
+		}
+		
 		
 		
 		
