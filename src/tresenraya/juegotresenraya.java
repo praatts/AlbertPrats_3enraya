@@ -7,14 +7,20 @@ public class juegotresenraya {
 		// TODO Auto-generated method stub
 
 		
+		char j1 = 'O';
+		char j2 = 'X';
+		char vacio = '-';
+		
+		System.out.println("Bienvenido al 3 en raya \nJugador 1: 'O' \nJugador 2: 'X' \nCasilla vacía: '-' \n");
+		
 		String jugadorInicial;
 		Scanner s = new Scanner(System.in);
 		Random r = new Random();
 		
-		System.out.println("Jugador 1, introduzca su nombre");
+		System.out.println("Jugador 1, introduzca su nombre:");
 		String jugador1 = s.nextLine();
 		
-		System.out.println("Jugador 2, introduzca su nombre");
+		System.out.println("Jugador 2, introduzca su nombre:");
 		String jugador2 = s.nextLine();
 		
 		
