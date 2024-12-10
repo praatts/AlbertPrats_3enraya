@@ -92,72 +92,79 @@ public class juegotresenraya {
 				System.out.println();
 			}
 			
-			while (partida != 1) {
+		
+				while (partida != 1) {
 			
-			System.out.println(jugadorInicial + " donde quieres situar tu ficha?");
-			System.out.println("Fila (1-3): ");
-			fila = s.nextInt() - 1;
-			System.out.println("Columna (1-3): ");
-			columna = s.nextInt() - 1;
+					System.out.println(jugadorInicial + " donde quieres situar tu ficha?");
+					System.out.println("Fila (1-3): ");
+					fila = s.nextInt() - 1;
+					System.out.println("Columna (1-3): ");
+					columna = s.nextInt() - 1;
 			
-			if (tablero[fila][columna] == '-') {
-				tablero[fila][columna] = 'O';
-			} else {
-				System.out.println("La posición introducida ya está ocupada, vuelva a seleccionar la posición");
-				System.out.println("Fila (1-3): ");
-				fila = s.nextInt() - 1;
-				System.out.println("Columna (1-3): ");
-				columna = s.nextInt() - 1;
-			}
+					if (tablero[fila][columna] == '-') {
+						tablero[fila][columna] = 'O';
+					} else {
+						System.out.println("La posición introducida ya está ocupada, vuelva a seleccionar la posición");
+						System.out.println("Fila (1-3): ");
+						fila = s.nextInt() - 1;
+						System.out.println("Columna (1-3): ");
+						columna = s.nextInt() - 1;
+					}
 			
 			
 			
-			System.out.println("Tablero actualizado");
-			for (int i = 0; i < tablero.length; i++) {
-				for (int j = 0; j < tablero[i].length; j++) {
-					System.out.print(tablero[i][j] + " ");
-				}
+					System.out.println("Tablero actualizado");
+					for (int i = 0; i < tablero.length; i++) {
+						for (int j = 0; j < tablero[i].length; j++) {
+							System.out.print(tablero[i][j] + " ");
+						}
 				
-				System.out.println();
-			}
+						System.out.println();
+					}
 			
-			contadorJugadas++;
+					contadorJugadas++;
+					
+					
 			
-			if (contadorJugadas == 9) {
-				System.out.println("Juego finalizado, gracias por jugar!");
-				partida = 1;
-			}
+					if (contadorJugadas == 9) {
+						System.out.println("Juego finalizado, gracias por jugar!");
+						partida = 1;
+						break;
+					}
+					
+					System.out.println(segundoJugador + " donde quieres situar tu ficha?");
+					System.out.println("Fila (1-3): ");
+					fila = s.nextInt() - 1;
+					System.out.println("Columna (1-3): ");
+					columna = s.nextInt() - 1;
 			
-			System.out.println(segundoJugador + " donde quieres situar tu ficha?");
-			System.out.println("Fila (1-3): ");
-			fila = s.nextInt() - 1;
-			System.out.println("Columna (1-3): ");
-			columna = s.nextInt() - 1;
+					if (tablero[fila][columna] == '-') {
+						tablero[fila][columna] = 'X';
+					} else {
+						System.out.println("La posición introducida ya está ocupada, vuelva a seleccionar la posición");
+						System.out.println("Fila (1-3): ");
+						fila = s.nextInt() - 1;
+						System.out.println("Columna (1-3): ");
+						columna = s.nextInt() - 1;
+					}
 			
-			if (tablero[fila][columna] == '-') {
-				tablero[fila][columna] = 'X';
-			} else {
-				System.out.println("La posición introducida ya está ocupada, vuelva a seleccionar la posición");
-				System.out.println("Fila (1-3): ");
-				fila = s.nextInt() - 1;
-				System.out.println("Columna (1-3): ");
-				columna = s.nextInt() - 1;
-			}
-			
-			System.out.println("Tablero actualizado");
-			for (int i = 0; i < tablero.length; i++) {
-				for (int j = 0; j < tablero[i].length; j++) {
-					System.out.print(tablero[i][j] + " ");
-				}
+					System.out.println("Tablero actualizado");
+					for (int i = 0; i < tablero.length; i++) {
+						for (int j = 0; j < tablero[i].length; j++) {
+							System.out.print(tablero[i][j] + " ");
+						}
 				
-				System.out.println();
-			}
+						System.out.println();
+					}
 			
-			contadorJugadas++;
+					contadorJugadas++;
+			
+					
+					
+				}
 			
 			
 			
-			}
 			
 			break;
 		
