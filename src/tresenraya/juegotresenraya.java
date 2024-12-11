@@ -7,12 +7,12 @@ public class juegotresenraya {
 		// TODO Auto-generated method stub
 
 		//Variables para determinar el carácter que usará cada jugador
-		int contadorJugadas = 0;
+		int contadorJugadas = 8;
 		String jugadorInicial;
 		String segundoJugador;
 		int fila = 0;
 		int columna = 0;
-		int partida = 0;
+		boolean partidaFinalizada = false;
 		Scanner s = new Scanner(System.in);
 		Random r = new Random();
 		
@@ -93,7 +93,7 @@ public class juegotresenraya {
 			}
 			
 		
-				while (partida != 1) {
+				while (!partidaFinalizada) {
 			
 					System.out.println(jugadorInicial + " donde quieres situar tu ficha?");
 					System.out.println("Fila (1-3): ");
@@ -128,9 +128,9 @@ public class juegotresenraya {
 			
 					if (contadorJugadas == 9) {
 						System.out.println("Juego finalizado, gracias por jugar!");
-						partida = 1;
-						break;
-					}
+						partidaFinalizada = true;
+						
+					} else {
 					
 					System.out.println(segundoJugador + " donde quieres situar tu ficha?");
 					System.out.println("Fila (1-3): ");
@@ -146,6 +146,7 @@ public class juegotresenraya {
 						fila = s.nextInt() - 1;
 						System.out.println("Columna (1-3): ");
 						columna = s.nextInt() - 1;
+						
 					}
 			
 					System.out.println("Tablero actualizado");
@@ -160,6 +161,8 @@ public class juegotresenraya {
 					contadorJugadas++;
 			
 					
+					
+					}
 					
 				}
 			
