@@ -114,7 +114,7 @@ public class juegotresenraya {
 						fila = s.nextInt() - 1;
 						System.out.println("Columna (1-3): ");
 						columna = s.nextInt() - 1;
-						e.nextLine();
+						
 					}
 
 					System.out.println("Tablero actualizado");
@@ -201,8 +201,7 @@ public class juegotresenraya {
 						revanchaJI = e.nextLine().toLowerCase();
 
 						if (revanchaJI.equals("no")) {
-							partidaFinalizada = true;
-							quererRevancha = false;
+							
 							juegoTerminado = true;
 						} else if (revanchaJI.equals("si")) {
 							System.out.println(segundoJugador + " ,quieres revancha? (Si / No)");
@@ -219,17 +218,18 @@ public class juegotresenraya {
 								juegoTerminado = true;
 							}
 						}
-
 					}
-
-				}
-
+				}	
+				
 				if (juegoTerminado) {
 					System.out.println("Habéis salido del juego, gracias por jugar!");
+					juegoTerminado = false;
+					partidaFinalizada = true;
+					quererRevancha = false;
+					
 				}
-
 			}
-
+			
 			break;
 
 		case 2:
