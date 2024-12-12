@@ -15,6 +15,9 @@ public class juegotresenraya {
 		int fila = 0;
 		int columna = 0;
 		boolean partidaFinalizada = false;
+		boolean quererRevancha = false;
+		String revanchaJI;
+		String revanchaSJ;
 		Scanner s = new Scanner(System.in);
 		Random r = new Random();
 
@@ -79,35 +82,10 @@ public class juegotresenraya {
 
 			// Muestra el tablero
 
-			System.out.println("Tablero inicial");
-			char[][] tablero1 = { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
-			for (int i = 0; i < tablero1.length; i++) {
-				for (int j = 0; j < tablero1[i].length; j++) {
-					System.out.print(tablero1[i][j] + " ");
-				}
+			while (!quererRevancha) {
 
-				System.out.println();
-			}
-
-			while (!partidaFinalizada) {
-
-				System.out.println(jugadorInicial + " donde quieres situar tu ficha?");
-				System.out.println("Fila (1-3): ");
-				fila = s.nextInt() - 1;
-				System.out.println("Columna (1-3): ");
-				columna = s.nextInt() - 1;
-
-				if (tablero1[fila][columna] == '-') {
-					tablero1[fila][columna] = 'O';
-				} else {
-					System.out.println("La posición introducida ya está ocupada, vuelva a seleccionar la posición");
-					System.out.println("Fila (1-3): ");
-					fila = s.nextInt() - 1;
-					System.out.println("Columna (1-3): ");
-					columna = s.nextInt() - 1;
-				}
-
-				System.out.println("Tablero actualizado");
+				System.out.println("Tablero inicial");
+				char[][] tablero1 = { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 				for (int i = 0; i < tablero1.length; i++) {
 					for (int j = 0; j < tablero1[i].length; j++) {
 						System.out.print(tablero1[i][j] + " ");
@@ -116,74 +94,124 @@ public class juegotresenraya {
 					System.out.println();
 				}
 
-				if (tablero1[0][0] == 'O' && tablero1[0][1] == 'O' && tablero1[0][2] == 'O'
-						|| tablero1[1][0] == 'O' && tablero1[1][1] == 'O' && tablero1[1][2] == 'O'
-						|| tablero1[2][0] == 'O' && tablero1[2][1] == 'O' && tablero1[2][2] == 'O'
-						|| tablero1[0][0] == 'O' && tablero1[1][0] == 'O' && tablero1[2][0] == 'O'
-						|| tablero1[0][1] == 'O' && tablero1[1][1] == 'O' && tablero1[1][2] == 'O'
-						|| tablero1[0][2] == 'O' && tablero1[1][2] == 'O' && tablero1[2][2] == 'O'
-						|| tablero1[0][0] == 'O' && tablero1[1][1] == 'O' && tablero1[2][2] == 'O'
-						|| tablero1[2][0] == 'O' && tablero1[1][1] == 'O' && tablero1[0][2] == 'O') {
-					
-					System.out.println(jugadorInicial + " ha ganado!");
-					partidaFinalizada = true;
-				} else {
+				while (!partidaFinalizada) {
 
-					contadorJugadas++;
+					System.out.println(jugadorInicial + " donde quieres situar tu ficha?");
+					System.out.println("Fila (1-3): ");
+					fila = s.nextInt() - 1;
+					System.out.println("Columna (1-3): ");
+					columna = s.nextInt() - 1;
 
-					if (contadorJugadas == 9) {
-						System.out.println("Juego finalizado, gracias por jugar!");
-						partidaFinalizada = true;
-
+					if (tablero1[fila][columna] == '-') {
+						tablero1[fila][columna] = 'O';
 					} else {
-
-						System.out.println(segundoJugador + " donde quieres situar tu ficha?");
+						System.out.println("La posición introducida ya está ocupada, vuelva a seleccionar la posición");
 						System.out.println("Fila (1-3): ");
 						fila = s.nextInt() - 1;
 						System.out.println("Columna (1-3): ");
 						columna = s.nextInt() - 1;
+					}
 
-						if (tablero1[fila][columna] == '-') {
-							tablero1[fila][columna] = 'X';
+					System.out.println("Tablero actualizado");
+					for (int i = 0; i < tablero1.length; i++) {
+						for (int j = 0; j < tablero1[i].length; j++) {
+							System.out.print(tablero1[i][j] + " ");
+						}
+
+						System.out.println();
+					}
+
+					if (tablero1[0][0] == 'O' && tablero1[0][1] == 'O' && tablero1[0][2] == 'O'
+							|| tablero1[1][0] == 'O' && tablero1[1][1] == 'O' && tablero1[1][2] == 'O'
+							|| tablero1[2][0] == 'O' && tablero1[2][1] == 'O' && tablero1[2][2] == 'O'
+							|| tablero1[0][0] == 'O' && tablero1[1][0] == 'O' && tablero1[2][0] == 'O'
+							|| tablero1[0][1] == 'O' && tablero1[1][1] == 'O' && tablero1[2][1] == 'O'
+							|| tablero1[0][2] == 'O' && tablero1[1][2] == 'O' && tablero1[2][2] == 'O'
+							|| tablero1[0][0] == 'O' && tablero1[1][1] == 'O' && tablero1[2][2] == 'O'
+							|| tablero1[2][0] == 'O' && tablero1[1][1] == 'O' && tablero1[0][2] == 'O') {
+
+						System.out.println(jugadorInicial + " ha ganado!");
+						partidaFinalizada = true;
+					} else {
+
+						contadorJugadas++;
+
+						if (contadorJugadas == 9) {
+							System.out.println("Juego finalizado, gracias por jugar!");
+							partidaFinalizada = true;
+
 						} else {
-							System.out.println(
-									"La posición introducida ya está ocupada, vuelva a seleccionar la posición");
+
+							System.out.println(segundoJugador + " donde quieres situar tu ficha?");
 							System.out.println("Fila (1-3): ");
 							fila = s.nextInt() - 1;
 							System.out.println("Columna (1-3): ");
 							columna = s.nextInt() - 1;
 
-						}
+							if (tablero1[fila][columna] == '-') {
+								tablero1[fila][columna] = 'X';
+							} else {
+								System.out.println(
+										"La posición introducida ya está ocupada, vuelva a seleccionar la posición");
+								System.out.println("Fila (1-3): ");
+								fila = s.nextInt() - 1;
+								System.out.println("Columna (1-3): ");
+								columna = s.nextInt() - 1;
 
-						System.out.println("Tablero actualizado");
-						for (int i = 0; i < tablero1.length; i++) {
-							for (int j = 0; j < tablero1[i].length; j++) {
-								System.out.print(tablero1[i][j] + " ");
 							}
 
-							System.out.println();
-						}
-						
-						if (tablero1[0][0] == 'X' && tablero1[0][1] == 'X' && tablero1[0][2] == 'X'
-								|| tablero1[1][0] == 'X' && tablero1[1][1] == 'X' && tablero1[1][2] == 'X'
-								|| tablero1[2][0] == 'X' && tablero1[2][1] == 'X' && tablero1[2][2] == 'X'
-								|| tablero1[0][0] == 'X' && tablero1[1][0] == 'X' && tablero1[2][0] == 'X'
-								|| tablero1[0][1] == 'X' && tablero1[1][1] == 'X' && tablero1[1][2] == 'X'
-								|| tablero1[0][2] == 'X' && tablero1[1][2] == 'X' && tablero1[2][2] == 'X'
-								|| tablero1[0][0] == 'X' && tablero1[1][1] == 'X' && tablero1[2][2] == 'X'
-								|| tablero1[2][0] == 'X' && tablero1[1][1] == 'X' && tablero1[0][2] == 'X') {
-							
-							System.out.println(segundoJugador + " ha ganado!");
-							partidaFinalizada = true;
-						}
+							System.out.println("Tablero actualizado");
+							for (int i = 0; i < tablero1.length; i++) {
+								for (int j = 0; j < tablero1[i].length; j++) {
+									System.out.print(tablero1[i][j] + " ");
+								}
 
-						contadorJugadas++;
+								System.out.println();
+							}
+
+							if (tablero1[0][0] == 'X' && tablero1[0][1] == 'X' && tablero1[0][2] == 'X'
+									|| tablero1[1][0] == 'X' && tablero1[1][1] == 'X' && tablero1[1][2] == 'X'
+									|| tablero1[2][0] == 'X' && tablero1[2][1] == 'X' && tablero1[2][2] == 'X'
+									|| tablero1[0][0] == 'X' && tablero1[1][0] == 'X' && tablero1[2][0] == 'X'
+									|| tablero1[0][1] == 'X' && tablero1[1][1] == 'X' && tablero1[2][1] == 'X'
+									|| tablero1[0][2] == 'X' && tablero1[1][2] == 'X' && tablero1[2][2] == 'X'
+									|| tablero1[0][0] == 'X' && tablero1[1][1] == 'X' && tablero1[2][2] == 'X'
+									|| tablero1[2][0] == 'X' && tablero1[1][1] == 'X' && tablero1[0][2] == 'X') {
+
+								System.out.println(segundoJugador + " ha ganado!");
+								partidaFinalizada = true;
+							}
+
+							contadorJugadas++;
+
+						}
 
 					}
 
 				}
 
+				System.out.println(jugadorInicial + " quieres revancha? (Si / No)");
+				revanchaJI = s.nextLine().toLowerCase();
+
+				if (revanchaJI.equals("no")) {
+					partidaFinalizada = true;
+					quererRevancha = false;
+				} else if (revanchaJI.equals("si")) {
+					System.out.println(segundoJugador + " quieres revancha? (Si / No)");
+					revanchaSJ = s.nextLine().toLowerCase();
+					if (revanchaSJ.equals("si")) {
+						partidaFinalizada = false;
+						quererRevancha = true;
+						contadorJugadas = 0;
+					} else {
+						partidaFinalizada = true;
+						quererRevancha = false;
+					}
+				}
+
 			}
+
+			System.out.println("Habéis salido del juego, gracias por jugar!");
 
 			break;
 
