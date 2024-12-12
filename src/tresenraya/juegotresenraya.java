@@ -16,9 +16,12 @@ public class juegotresenraya {
 		int columna = 0;
 		boolean partidaFinalizada = false;
 		boolean quererRevancha = false;
-		String revanchaJI;
+		boolean juegoTerminado = false;
+		String ganador = "";
+		String revanchaJI = "";
 		String revanchaSJ;
 		Scanner s = new Scanner(System.in);
+		Scanner e = new Scanner(System.in);
 		Random r = new Random();
 
 		System.out.println("Bienvenido al 3 en raya \nJugador 1: 'O' \nJugador 2: 'X' \nCasilla vacía: '-' \n");
@@ -85,7 +88,7 @@ public class juegotresenraya {
 			while (!quererRevancha) {
 				if (!partidaFinalizada) {
 					System.out.println("Tablero inicial");
-					
+
 					for (int i = 0; i < tablero1.length; i++) {
 						for (int j = 0; j < tablero1[i].length; j++) {
 							System.out.print(tablero1[i][j] + " ");
@@ -111,6 +114,7 @@ public class juegotresenraya {
 						fila = s.nextInt() - 1;
 						System.out.println("Columna (1-3): ");
 						columna = s.nextInt() - 1;
+						e.nextLine();
 					}
 
 					System.out.println("Tablero actualizado");
@@ -133,6 +137,7 @@ public class juegotresenraya {
 
 						System.out.println(jugadorInicial + " ha ganado!");
 						partidaFinalizada = true;
+						ganador = jugadorInicial;
 					} else {
 
 						contadorJugadas++;
@@ -181,6 +186,7 @@ public class juegotresenraya {
 
 								System.out.println(segundoJugador + " ha ganado!");
 								partidaFinalizada = true;
+								ganador = segundoJugador;
 							}
 
 							contadorJugadas++;
@@ -189,30 +195,40 @@ public class juegotresenraya {
 
 					}
 
+					if (!ganador.equals("") || contadorJugadas == 9) {
+
+						System.out.println(jugadorInicial + " ,quieres revancha? (Si / No)");
+						revanchaJI = e.nextLine().toLowerCase();
+
+						if (revanchaJI.equals("no")) {
+							partidaFinalizada = true;
+							quererRevancha = false;
+							juegoTerminado = true;
+						} else if (revanchaJI.equals("si")) {
+							System.out.println(segundoJugador + " ,quieres revancha? (Si / No)");
+							revanchaSJ = e.nextLine().toLowerCase();
+							if (revanchaSJ.equals("si")) {
+								partidaFinalizada = false;
+								contadorJugadas = 0;
+								ganador = "";
+								tablero1 = new char[][] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
+								juegoTerminado = false;
+							} else {
+								partidaFinalizada = true;
+								quererRevancha = false;
+								juegoTerminado = true;
+							}
+						}
+
+					}
+
 				}
 
-				System.out.println(jugadorInicial + " quieres revancha? (Si / No)");
-				revanchaJI = s.nextLine().toLowerCase();
-
-				if (revanchaJI.equals("no")) {
-					partidaFinalizada = true;
-					quererRevancha = false;
-				} else if (revanchaJI.equals("si")) {
-					System.out.println(segundoJugador + " quieres revancha? (Si / No)");
-					revanchaSJ = s.nextLine().toLowerCase();
-					if (revanchaSJ.equals("si")) {
-						partidaFinalizada = false;
-						contadorJugadas = 0;
-						tablero1 = new char[][] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
-					} else {
-						partidaFinalizada = true;
-						quererRevancha = false;
-					}
+				if (juegoTerminado) {
+					System.out.println("Habéis salido del juego, gracias por jugar!");
 				}
 
 			}
-
-			System.out.println("Habéis salido del juego, gracias por jugar!");
 
 			break;
 
@@ -227,6 +243,7 @@ public class juegotresenraya {
 				jugadorInicial = jugador2;
 
 			}
+			
 			break;
 		}
 
