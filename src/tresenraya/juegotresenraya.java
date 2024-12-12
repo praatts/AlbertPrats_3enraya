@@ -81,17 +81,18 @@ public class juegotresenraya {
 			}
 
 			// Muestra el tablero
-
+			char[][] tablero1 = { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 			while (!quererRevancha) {
-
-				System.out.println("Tablero inicial");
-				char[][] tablero1 = { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
-				for (int i = 0; i < tablero1.length; i++) {
-					for (int j = 0; j < tablero1[i].length; j++) {
-						System.out.print(tablero1[i][j] + " ");
+				if (!partidaFinalizada) {
+					System.out.println("Tablero inicial");
+					
+					for (int i = 0; i < tablero1.length; i++) {
+						for (int j = 0; j < tablero1[i].length; j++) {
+							System.out.print(tablero1[i][j] + " ");
+						}
+						System.out.println();
 					}
 
-					System.out.println();
 				}
 
 				while (!partidaFinalizada) {
@@ -201,8 +202,8 @@ public class juegotresenraya {
 					revanchaSJ = s.nextLine().toLowerCase();
 					if (revanchaSJ.equals("si")) {
 						partidaFinalizada = false;
-						quererRevancha = true;
 						contadorJugadas = 0;
+						tablero1 = new char[][] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 					} else {
 						partidaFinalizada = true;
 						quererRevancha = false;
